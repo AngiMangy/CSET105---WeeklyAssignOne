@@ -9,11 +9,12 @@ let num1 = 1;
 let num2 = 3;
 
 // Level One Solution
+function maxScore1(){
     while(question <= 20){
         answer = Number(prompt(`${question}) ${num1}+${num2} = `));
         if(isNaN(answer)){
             if(answer = "skip"){
-                console.log(`Skip Used, Your score is ${score}`)
+                console.log(`Skip Used, Your score is ${score}`);
             }
         }
         else if(answer === num1+num2){
@@ -29,5 +30,6 @@ let num2 = 3;
         question = question + 1;
     }
     if(question = 21){
-        console.log(`Your final score is ${score}/200`)
+        console.log(`Your final score is ${score}/200`);
     }
+}
