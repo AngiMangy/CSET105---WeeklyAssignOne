@@ -5,20 +5,34 @@ const prompt = require('prompt-sync')();
 // Global Variables
 let question = 1;
 let score = 0;
-let num1 = 1;
-let num2 = 3;
+let num1 = Math.floor(Math.random() * 10);
+let num2 = Math.floor(Math.random() * 10);
 let strike = 0;
 
-// Max Score Easy
+// Operation Chooser
+function operationEasy(){
+    roll = Math.floor(Math.random() * 2) + 1;
+    if(roll === 1){
+        operation = `+`
+        solution = num1 + num2
+    }
+    else if(roll === 2){
+        operation = `-`
+        solution = num1 - num2
+    }
+}
+
+// Max Score, Easy
 function maxScore1(){
     while(question <= 20){
-        answer = Number(prompt(`${question}) ${num1}+${num2} = `));
+        operationEasy()
+        answer = Number(prompt(`${question}) ${num1} ${operation} ${num2} = `));
         if(isNaN(answer)){
             if(answer = "skip"){
                 console.log(`Skip Used, Your score is ${score}`);
             }
         }
-        else if(answer === num1+num2){
+        else if(answer === solution){
             score = score + 10;
             console.log(`Correct, your score is now ${score}`);
         }
@@ -26,8 +40,8 @@ function maxScore1(){
             score = score - 5;
             console.log(`You Dumb? your score is now ${score}`);
         }
-        num1 = num1 + 1;
-        num2 = num2 + 2;
+        num1 = Math.floor(Math.random() * 10);
+        num2 = Math.floor(Math.random() * 10);
         question = question + 1;
     }
     if(question = 21){
@@ -37,20 +51,21 @@ function maxScore1(){
 // Three Out, Easy
 function threeOut1(){
     while(strike < 3){
-        answer = Number(prompt(`${question}) ${num1}+${num2} = `));
+        operationEasy()
+        answer = Number(prompt(`${question}) ${num1} ${operation} ${num2} = `));
         if(isNaN(answer)){
             strike = strike + 1
             console.log(`invalid input, thats strike ${strike}/3,`)
             }
-        else if(answer === num1+num2){
-            console.log(`Correct :)`);
+        else if(answer === solution){
+            console.log(`Correct`);
         }
         else{
             strike = strike + 1
             console.log(`You Dumb? That's strike ${strike}/3`);
         }
-        num1 = num1 + 1;
-        num2 = num2 + 2;
+        num1 = Math.floor(Math.random() * 10);
+        num2 = Math.floor(Math.random() * 10);
         question = question + 1;
     }
 }
