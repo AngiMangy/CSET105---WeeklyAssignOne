@@ -189,7 +189,7 @@ function strikeOut1(){
     }
 }
 // Medium
-function stikeOut2(){
+function strikeOut2(){
     while(strike < 3){
         operationMedium()
         answer = Number(prompt(`${question}) ${num1} ${operation} ${num2} = `));
